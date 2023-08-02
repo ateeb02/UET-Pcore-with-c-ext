@@ -154,8 +154,8 @@ module c_decode (
 
 
     always_comb begin  // this is the block in which we make extend the compressed to whole instructions
-        inst_load_stack         = {{comp_load_i_type}, {5'h02} , {comp_func3} , {rs1}, {instr_opcode.OPCODE_LOAD_INST}, {2'b11}};     // lw rd ,offset[7:2](x2)
-        inst_store_stack        = {{comp_imm_stack_store[11:5]} , {rs2}, {5'h02},{3'b010}, {comp_imm_stack_store[4:0]}, {instr_opcode.OPCODE_STORE_INST}, {2'b11}};   //sw rs2, offset[7:2](x2)
+        inst_load_stack         = {{comp_load_i_type}, {5'h02} , {comp_func3} , {rs1}, {OPCODE_LOAD_INST}, {2'b11}};     // lw rd ,offset[7:2](x2)
+        inst_store_stack        = {{comp_imm_stack_store[11:5]} , {rs2}, {5'h02},{3'b010}, {comp_imm_stack_store[4:0]}, {OPCODE_STORE_INST}, {2'b11}};   //sw rs2, offset[7:2](x2)
         inst_load               = {{comp_imm_load_store}, {comp_rs1}, {comp_func3}, {comp_rd}, {instr_opcode.OPCODE_LOAD_INST}, {2'b11}};    // lw rd', offset[6:2](rs1')
         inst_store              = {{comp_imm_load_store[11:5]}, {comp_rs2},{comp_rs1}, {3'b010}, {comp_imm_load_store[4:0]}, {instr_opcode.OPCODE_STORE_INST}, {2'b11}};    //sw rs2', offset[6:2](rs1')
         inst_jal                = {{{imm_jump[19]},{imm_jump[9:0]},{imm_jump[10]},{imm_jump[18:11]}} , {5'h01}, {instr_opcode.OPCODE_JAL_INST}, {2'b11}};  // jal x1, offset[11:1].
