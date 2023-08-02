@@ -72,7 +72,7 @@ module c_misalign (
         pc_misaligned_o =1'b0;
         icache_flush=1'b0;
         icache_req_kill=1'b0;
-        icache_request=1'b0;
+        icache_req=1'b0;
 
         case(current_state)
         s0 : begin // checking for misaligned instruction
@@ -92,7 +92,7 @@ module c_misalign (
             stall_pc =1'b1;
             pc_misaligned_o =1'b1;
             icache_req_kill =1'b1;     // send a kill request to any previous fetch
-            icache_request =1'b1;      // make a request simultanously for the next instruction
+            icache_req =1'b1;      // make a request simultanously for the next instruction
             if (sel_for_branch) next_state = s0;  // if a brach or jump occurs, priotize the jump. thus resetting the realligner
             else /*if (icache_valid) */ next_state =s2;    //if a valid signal is recieved from cache, then jump to next state
             //else next_state= s1;        
@@ -104,7 +104,7 @@ module c_misalign (
             pc_misaligned_o =1'b1;
             stall_pc = 1'b0;
             icache_req_kill=1'b0;
-            icache_request=1'b0;
+            icache_req =1'b0;
              if (sel_for_branch) next_state=s0;
             else begin
                 if (next_misaligned ) next_state =s1;        // if the missalignment is in the s1 stage, go to s1 instead of s0 after s2
