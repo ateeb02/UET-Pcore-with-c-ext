@@ -83,10 +83,10 @@ assign csr2if_fb = csr2if_fb_i;
 assign fwd2if    = fwd2if_i;
 
 // Evaluation for misaligned address
-assign pc_misaligned = (~is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;
+assign pc_misaligned = (~cext2if_i.is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;
 
 // Stall signal for IF stage
-assign if_stall = fwd2if.if_stall | (~icache2if.ack) | cext2if.stall;
+assign if_stall = fwd2if.if_stall | (~icache2if.ack) | cext2if_i.stall;
 
 // PC update state machine
 always_ff @(posedge clk) begin
@@ -98,13 +98,13 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
-    case (cext2if_o.is_comp)
+    case (cext2if_i.is_comp)
         1'b0:       incr = 32'd4;
         1'b1:       incr = 32'd2;
         default:    incr = 32'd4;
     endcase
 
-    pc_next = (cext2if.pc_aligned + incr);
+    pc_next = (cext2if_i.pc_aligned + incr);
 
     case (1'b1)
         fwd2if.csr_new_pc_req : begin
@@ -170,7 +170,7 @@ assign if2icache_o.icache_flush = csr2if_fb.icache_flush | cext2if_i.icache_flus
 
 //assign if2id_data.instr         = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
 
-assign if2cext.instr_un         = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
+assign if2cext_o.instr_un       = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
 assign if2id_data.instr         = cext2if_i.instr;
 
 assign if2id_data.pc            = pc_ff;
