@@ -10,20 +10,20 @@
 
 // Bus interface from IF to cext
 typedef struct packed {                            
-    logic [`XLEN-1:0]               instr_un,
-    logic [`XLEN-1:0]               pc_ff,
+    logic [`XLEN-1:0]               instr_un;
+    logic [`XLEN-1:0]               pc_ff;
     //logic                           icache_valid,
 } type_if2cext_s;
 
 // Bus interface from cext to IF
 typedef struct packed {      
-    logic [`XLEN-1:0]               instr,
-    logic [`XLEN-1:0]               pc_aligned,                   
-    logic                           stall,
-    logic                           is_comp, 
-    logic                           icache_flush,
-    logic                           icache_req,
-    logic                           icache_req_kill,
+    logic [`XLEN-1:0]               instr;
+    logic [`XLEN-1:0]               pc_aligned;                   
+    logic                           stall;
+    logic                           is_comp; 
+    logic                           icache_flush;
+    logic                           icache_req;
+    logic                           icache_req_kill;
 } type_cext2if_s;
 
 
