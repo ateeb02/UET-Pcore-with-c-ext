@@ -43,7 +43,7 @@ c_misalign misalign (
     //outputs
     .stall_pc               (cext2if_o.stall),
     .icache_flush           (cext2if_o.icache_flush),
-    .icache_request         (cext2if_o.icache_request),
+    .icache_req             (cext2if_o.icache_req),
     .icache_req_kill        (cext2if_o.icache_req_kill),
     .pc_misaligned_o        (pc_misalign),
     .pc_out                 (cext2if_o.pc_aligned), 
