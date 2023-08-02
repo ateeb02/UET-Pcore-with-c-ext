@@ -14,7 +14,7 @@ module c_misalign (
 
     output  logic           stall_pc,
     output  logic           pc_misaligned_o,
-    output  logic           icache_request,            // this is a the data type elements defined for cache
+    output  logic           icache_req,            // this is a the data type elements defined for cache
     output  logic           icache_req_kill,           //  it is made of a request, resquest_kill, flush_cache, 
     output  logic           icache_flush,              //  address for the instruction
     output  logic   [31:0]  pc_out,                     //
