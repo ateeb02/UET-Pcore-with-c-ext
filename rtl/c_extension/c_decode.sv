@@ -6,7 +6,7 @@
 `include "pcore_interface_defs.svh"
 `endif
 
-module compress_unit (
+module c_decode (
     input logic [31:0] inst,input logic  pc,pc_misalign,  output logic next_comp16, output logic [31:0] compressed_inst_out
 );
     logic [1:0] comp_opcode;
@@ -156,29 +156,29 @@ module compress_unit (
     always_comb begin  // this is the block in which we make extend the compressed to whole instructions
         inst_load_stack         = {{comp_load_i_type}, {5'h02} , {comp_func3} , {rs1}, {instr_opcode.OPCODE_LOAD_INST}, {2'b11}};     // lw rd ,offset[7:2](x2)
         inst_store_stack        = {{comp_imm_stack_store[11:5]} , {rs2}, {5'h02},{3'b010}, {comp_imm_stack_store[4:0]}, {instr_opcode.OPCODE_STORE_INST}, {2'b11}};   //sw rs2, offset[7:2](x2)
-        inst_load               = {{comp_imm_load_store}, {comp_rs1}, {comp_func3}, {comp_rd}, {instr_opcode.OPCODE_LOAD_INST}, {2'b11}};    // lw rd', offset[6:2](rs1')
-        inst_store              = {{comp_imm_load_store[11:5]}, {comp_rs2},{comp_rs1}, {3'b010}, {comp_imm_load_store[4:0]}, {instr_opcode.OPCODE_STORE_INST}, {2'b11}};    //sw rs2', offset[6:2](rs1')
-        inst_jal                = {{{imm_jump[19]},{imm_jump[9:0]},{imm_jump[10]},{imm_jump[18:11]}} , {5'h01}, {instr_opcode.OPCODE_JAL_INST}, {2'b11}};  // jal x1, offset[11:1].
-        inst_j                  = {{{imm_jump[19]},{imm_jump[9:0]},{imm_jump[10]},{imm_jump[18:11]}} , {5'h00}, {instr_opcode.OPCODE_JAL_INST}, {2'b11}};    //  jal x0, offset[11:1].
-        inst_jr                 = {{12'h0} , {rs1} , {3'b0}, {5'h00}, {instr_opcode.OPCODE_JALR_INST}, {2'b11}};   //jalr x0, rs1, 0.
-        inst_jalr               = {{12'h0} , {rs1} , {3'b0}, {5'h01}, {instr_opcode.OPCODE_JALR_INST}, {2'b11}};  //jalr x1, rs1, 0.
-        inst_branch_equal       = {{{comp_imm_branch[11]} , {comp_imm_branch [9:4]}} ,{5'h00} ,  {comp_rs1} , {3'b000} , {{comp_imm_branch[3:0]},{comp_imm_branch[10]}} ,  {instr_opcode.OPCODE_BRANCH_INST}, {2'b11}};  // beq rs1', x0, offset[8:1].
-        inst_branch_not         = {{{comp_imm_branch[11]} , {comp_imm_branch [9:4]}} ,{5'h00} ,  {comp_rs1} , {3'b001} , {{comp_imm_branch[3:0]},{comp_imm_branch[10]}} ,  {instr_opcode.OPCODE_BRANCH_INST}, {2'b11}};    // bne rs1', x0, offset[8:1]
-        inst_LI                 = {{imm_Li}, {5'h00} , {3'b0} , {rd} , {instr_opcode.OPCODE_IMM_INST}, {2'b11}};                                // addi rd, x0, imm[5:0]
-        inst_LUI                = {{imm_LUI} , {rd} , {instr_opcode.OPCODE_LUI_INST}, {2'b11}};                                                  // lui rd, nzuimm[17:12]
-        inst_i_type             = {{comp_i_tpye} , {rs1} , {comp_func3} , {rs1} , {instr_opcode.OPCODE_IMM_INST}, {2'b11}}  ;              // only for  addi rd, rd, nzimm[5:0]
-        inst_addi_16_sp         = {{imm_LUI_addi_16_sp} , {5'h02} , {instr_opcode.OPCODE_LUI_INST}, {2'b11}};                              // addi x2, x2, nzimm[9:4].
-        inst_addi_14_sp         = {{comp_addi_14_sp}, {5'h02} , {comp_func3} , {comp_rd} , {instr_opcode.OPCODE_IMM_INST}, {2'b11}};    // addi rd', x2, nzuimm[9:2].
-        inst_SLLI               = {{7'b0} , {imm_sLLI} ,{rs1} , {3'b001}, {rs1}, {instr_opcode.OPCODE_IMM_INST}, {2'b11}};                    // slli rd, rd, shamt[5:0]
-        inst_sRLI               = {{7'b0} , {imm_sLLI} ,{comp_rs1} , {3'b101}, {comp_rs1}, {instr_opcode.OPCODE_IMM_INST}, {2'b11}};          // srli rd', rd', shamt[5:0]
-        inst_sRAI               = {{7'b0100000} , {imm_sLLI} ,{comp_rs1} , {3'b101}, {comp_rs1}, {instr_opcode.OPCODE_IMM_INST}, {2'b11}};    // srai rd', rd', shamt[5:0]
-        inst_ANDI               = {{imm_ANDI} ,{comp_rs1}, {3'b111}, {comp_rs1}, {instr_opcode.OPCODE_IMM_INST}, {2'b11}};                    // andi rd', rd', imm[5:0]
-	inst_ADD                = {{7'b0}, {rs2}, {rs1}, {3'b0} , {rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };                           // add rd, rd, rs2.
-        inst_MV                 = {{7'b0}, {rs2}, {5'b0}, {3'b0} , {rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };                            // add rd, x0, rs2
-        inst_AND                = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b111} , {comp_rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };           // and rd', rd', rs2'
-        inst_OR                 = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b110} , {comp_rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };            // or rd', rd', rs2'
-        inst_XOR                = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b100} , {comp_rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };           // xor rd', rd', rs2'
-        inst_SUB                = {{7'b0100000}, {comp_rs2}, {comp_rs1}, {3'b000} , {comp_rs1} , {instr_opcode.OPCODE_ARITH_INST}, {2'b11} };     // sub rd', rd', rs2'
-	    inst_E_Break            = {{12'b000000000001},{5'b0},{3'b0},{5'b0},{instr_opcode.OPCODE_SYSTEM_INST}, {2'b11}};
+        inst_load               = {{comp_imm_load_store}, {comp_rs1}, {comp_func3}, {comp_rd}, {type_rv_opcode_e.OPCODE_LOAD_INST}, {2'b11}};    // lw rd', offset[6:2](rs1')
+        inst_store              = {{comp_imm_load_store[11:5]}, {comp_rs2},{comp_rs1}, {3'b010}, {comp_imm_load_store[4:0]}, {type_rv_opcode_e.OPCODE_STORE_INST}, {2'b11}};    //sw rs2', offset[6:2](rs1')
+        inst_jal                = {{{imm_jump[19]},{imm_jump[9:0]},{imm_jump[10]},{imm_jump[18:11]}} , {5'h01}, {type_rv_opcode_e.OPCODE_JAL_INST}, {2'b11}};  // jal x1, offset[11:1].
+        inst_j                  = {{{imm_jump[19]},{imm_jump[9:0]},{imm_jump[10]},{imm_jump[18:11]}} , {5'h00}, {type_rv_opcode_e.OPCODE_JAL_INST}, {2'b11}};    //  jal x0, offset[11:1].
+        inst_jr                 = {{12'h0} , {rs1} , {3'b0}, {5'h00}, {type_rv_opcode_e.OPCODE_JALR_INST}, {2'b11}};   //jalr x0, rs1, 0.
+        inst_jalr               = {{12'h0} , {rs1} , {3'b0}, {5'h01}, {type_rv_opcode_e.OPCODE_JALR_INST}, {2'b11}};  //jalr x1, rs1, 0.
+        inst_branch_equal       = {{{comp_imm_branch[11]} , {comp_imm_branch [9:4]}} ,{5'h00} ,  {comp_rs1} , {3'b000} , {{comp_imm_branch[3:0]},{comp_imm_branch[10]}} ,  {type_rv_opcode_e.OPCODE_BRANCH_INST}, {2'b11}};  // beq rs1', x0, offset[8:1].
+        inst_branch_not         = {{{comp_imm_branch[11]} , {comp_imm_branch [9:4]}} ,{5'h00} ,  {comp_rs1} , {3'b001} , {{comp_imm_branch[3:0]},{comp_imm_branch[10]}} ,  {type_rv_opcode_e.OPCODE_BRANCH_INST}, {2'b11}};    // bne rs1', x0, offset[8:1]
+        inst_LI                 = {{imm_Li}, {5'h00} , {3'b0} , {rd} , {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};                                // addi rd, x0, imm[5:0]
+        inst_LUI                = {{imm_LUI} , {rd} , {type_rv_opcode_e.OPCODE_LUI_INST}, {2'b11}};                                                  // lui rd, nzuimm[17:12]
+        inst_i_type             = {{comp_i_tpye} , {rs1} , {comp_func3} , {rs1} , {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}}  ;              // only for  addi rd, rd, nzimm[5:0]
+        inst_addi_16_sp         = {{imm_LUI_addi_16_sp} , {5'h02} , {type_rv_opcode_e.OPCODE_LUI_INST}, {2'b11}};                              // addi x2, x2, nzimm[9:4].
+        inst_addi_14_sp         = {{comp_addi_14_sp}, {5'h02} , {comp_func3} , {comp_rd} , {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};    // addi rd', x2, nzuimm[9:2].
+        inst_SLLI               = {{7'b0} , {imm_sLLI} ,{rs1} , {3'b001}, {rs1}, {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};                    // slli rd, rd, shamt[5:0]
+        inst_sRLI               = {{7'b0} , {imm_sLLI} ,{comp_rs1} , {3'b101}, {comp_rs1}, {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};          // srli rd', rd', shamt[5:0]
+        inst_sRAI               = {{7'b0100000} , {imm_sLLI} ,{comp_rs1} , {3'b101}, {comp_rs1}, {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};    // srai rd', rd', shamt[5:0]
+        inst_ANDI               = {{imm_ANDI} ,{comp_rs1}, {3'b111}, {comp_rs1}, {type_rv_opcode_e.OPCODE_IMM_INST}, {2'b11}};                    // andi rd', rd', imm[5:0]
+        inst_ADD                = {{7'b0}, {rs2}, {rs1}, {3'b0} , {rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };                           // add rd, rd, rs2.
+        inst_MV                 = {{7'b0}, {rs2}, {5'b0}, {3'b0} , {rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };                            // add rd, x0, rs2
+        inst_AND                = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b111} , {comp_rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };           // and rd', rd', rs2'
+        inst_OR                 = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b110} , {comp_rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };            // or rd', rd', rs2'
+        inst_XOR                = {{7'b0}, {comp_rs2}, {comp_rs1}, {3'b100} , {comp_rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };           // xor rd', rd', rs2'
+        inst_SUB                = {{7'b0100000}, {comp_rs2}, {comp_rs1}, {3'b000} , {comp_rs1} , {type_rv_opcode_e.OPCODE_ARITH_INST}, {2'b11} };     // sub rd', rd', rs2'
+	    inst_E_Break            = {{12'b000000000001},{5'b0},{3'b0},{5'b0},{type_rv_opcode_e.OPCODE_SYSTEM_INST}, {2'b11}};
     end
 endmodule
