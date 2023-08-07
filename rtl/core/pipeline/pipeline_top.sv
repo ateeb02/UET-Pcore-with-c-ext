@@ -174,7 +174,7 @@ fetch fetch_module (
     .if2cext_o                  (if2cext)
 );
 
-c_top c_extension_module (
+c_top c_top (
     .clk                        (clk),
     .reset                      (rst_n),
     .br_taken_i                 (),
