@@ -15,6 +15,7 @@
 `else
 `include "mmu_defs.svh"
 `include "cache_defs.svh"
+`include "c_ext_defs.svh" //edit
 `endif
 
 module fetch (
