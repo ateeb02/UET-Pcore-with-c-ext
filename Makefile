@@ -21,6 +21,7 @@ uartbuild_root := sdk/example-uart/build/
 src := bench/pcore_tb.sv							\
 	   $(wildcard rtl/*.sv)							\
 	   $(wildcard rtl/core/*.sv)						\
+	   $(wildcard rtl/c_extension/*.sv) \
 	   $(wildcard rtl/core/*/*.sv)						\
 	   $(wildcard rtl/interconnect/*.sv)					\
 	   $(wildcard rtl/memory/*.sv)						\

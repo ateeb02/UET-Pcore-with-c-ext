@@ -7,7 +7,7 @@
 `endif
 
 module c_decode (
-    input logic [31:0] inst,input logic  pc,pc_misalign,  output logic next_comp16, output logic [31:0] compressed_inst_out
+    input logic [31:0] inst,input logic  pc,pc_misalign,  output logic next_comp16, output logic [31:0] compressed_inst_out,output logic illegal_inst
 );
     logic [1:0] comp_opcode;
     logic [11:0] comp_load_i_type, comp_imm_stack_store,comp_imm_load_store, imm_Li, comp_i_tpye;
@@ -62,6 +62,8 @@ module c_decode (
         else comp_inst = inst[15:0];//change
     end
     end
+
+      assign illegal_inst = ~illegal;
 
     always_comb begin // this is the sel which tells the pc to do +2 and inst_mem to to address>>1
     if (illegal) begin //check for illegal inst all zeros 					      

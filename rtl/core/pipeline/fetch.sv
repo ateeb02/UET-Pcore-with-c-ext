@@ -15,7 +15,7 @@
 `else
 `include "mmu_defs.svh"
 `include "cache_defs.svh"
-`include "c_ext_defs.svh" //edit
+//`include "c_ext_defs.svh" //edit
 `endif
 
 module fetch (
@@ -159,13 +159,13 @@ end
 
 // Update the outputs to MMU and Imem modules
 assign if2mmu.i_vaddr = pc_next;
-assign if2mmu.i_req   = `IMEM_INST_REQ | cext2if_i.icache_req; 
+assign if2mmu.i_req   = `IMEM_INST_REQ; 
 
 assign if2icache_o.addr = mmu2if.i_paddr[`XLEN-1:0]; // pc_next; 
 assign if2icache_o.req  = mmu2if.i_hit;              // `IMEM_INST_REQ;
 
-assign if2icache_o.req_kill     = fwd2if.csr_new_pc_req | fwd2if.exe_new_pc_req | cext2if_i.icache_req_kill;
-assign if2icache_o.icache_flush = csr2if_fb.icache_flush | cext2if_i.icache_flush;   
+assign if2icache_o.req_kill     = fwd2if.csr_new_pc_req | fwd2if.exe_new_pc_req;
+assign if2icache_o.icache_flush = csr2if_fb.icache_flush;   
 
 // Update the outputs to ID stage
 

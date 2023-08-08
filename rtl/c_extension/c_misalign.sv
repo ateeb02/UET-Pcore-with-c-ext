@@ -7,16 +7,13 @@ module c_misalign (
     input   logic           reset, 
 
     input   logic           sel_for_branch,
-    //input   logic           icache_valid,              // this is the type defined in cache difines, 
+    input   logic           icache_valid,              // this is the type defined in cache difines, 
     input   logic   [31:0]  inst_in,                    // it includes an acknowledged and the instruction
     input   logic   [31:0]  pc_in, 
     
 
     output  logic           stall_pc,
     output  logic           pc_misaligned_o,
-    output  logic           icache_req,            // this is a the data type elements defined for cache
-    output  logic           icache_req_kill,           //  it is made of a request, resquest_kill, flush_cache, 
-    output  logic           icache_flush,              //  address for the instruction
     output  logic   [31:0]  pc_out,                     //
     output  logic   [31:0]  inst_out
 );
@@ -70,9 +67,6 @@ module c_misalign (
         pc_out=pc_in;
         inst_out=inst_in;
         pc_misaligned_o =1'b0;
-        icache_flush=1'b0;
-        icache_req_kill=1'b0;
-        icache_req=1'b0;
 
         case(current_state)
         s0 : begin // checking for misaligned instruction
@@ -91,11 +85,9 @@ module c_misalign (
             inst_out =32'h0000_0013;
             stall_pc =1'b1;
             pc_misaligned_o =1'b1;
-            icache_req_kill =1'b1;     // send a kill request to any previous fetch
-            icache_req =1'b1;      // make a request simultanously for the next instruction
             if (sel_for_branch) next_state = s0;  // if a brach or jump occurs, priotize the jump. thus resetting the realligner
-            else /*if (icache_valid) */ next_state =s2;    //if a valid signal is recieved from cache, then jump to next state
-            //else next_state= s1;        
+            else if (icache_valid) next_state =s2;    //if a valid signal is recieved from cache, then jump to next state
+            else next_state= s1;        
 
         end
         s2 : begin  // instruction fetched and concatinated, turn off the stall signal and keep the pc as it is
@@ -103,8 +95,6 @@ module c_misalign (
             pc_out = pc_in; 
             pc_misaligned_o =1'b1;
             stall_pc = 1'b0;
-            icache_req_kill=1'b0;
-            icache_req =1'b0;
              if (sel_for_branch) next_state=s0;
             else begin
                 if (next_misaligned ) next_state =s1;        // if the missalignment is in the s1 stage, go to s1 instead of s0 after s2

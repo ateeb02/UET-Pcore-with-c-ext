@@ -36,15 +36,12 @@ c_misalign misalign (
     .reset                  (reset), 
 
     .sel_for_branch         (br_taken_i),
-    //.icache_valid           (if2cext_i.icache_valid),
+    .icache_valid           (if2cext_i.icache_valid),
     .pc_in                  (if2cext_i.pc_ff), 
     .inst_in                (if2cext_i.instr_un),
 
     //outputs
     .stall_pc               (cext2if_o.stall),
-    .icache_flush           (cext2if_o.icache_flush),
-    .icache_req             (cext2if_o.icache_req),
-    .icache_req_kill        (cext2if_o.icache_req_kill),
     .pc_misaligned_o        (pc_misalign),
     .pc_out                 (cext2if_o.pc_aligned), 
     .inst_out               (instruction)
@@ -58,7 +55,8 @@ c_decode decode (
     
     //outputs
     .next_comp16            (cext2if_o.is_comp), 
-    .compressed_inst_out    (cext2if_o.instr)
+    .compressed_inst_out    (cext2if_o.instr),
+    .illegal_inst           (cext2if_o.illegal)
 );
 
 
