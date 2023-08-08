@@ -21,12 +21,12 @@ uartbuild_root := sdk/example-uart/build/
 src := bench/pcore_tb.sv							\
 	   $(wildcard rtl/*.sv)							\
 	   $(wildcard rtl/core/*.sv)						\
-	   $(wildcard rtl/c_extension/*.sv) \
 	   $(wildcard rtl/core/*/*.sv)						\
 	   $(wildcard rtl/interconnect/*.sv)					\
 	   $(wildcard rtl/memory/*.sv)						\
 	   $(wildcard rtl/memory/*/*.sv)					\
-       	   $(wildcard rtl/peripherals/*/*.sv)
+       	   $(wildcard rtl/peripherals/*/*.sv)					\
+       	   $(wildcard rtl/c_extension/*.sv)
 
 incdir 	:= 	rtl/defines/
 list_incdir := $(foreach dir, ${incdir}, +incdir+$(dir))
