@@ -1,0 +1,3 @@
+[submodule "verif/verif/riscv-arch-test"]
+	path = verif/verif/riscv-arch-test
+	url = https://github.com/ateeb02/UET-Pcore-with-c-ext.git
