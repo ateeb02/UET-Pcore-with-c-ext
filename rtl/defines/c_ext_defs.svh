@@ -7,6 +7,8 @@
 // Author: Ateeb Tahir, DDRC, UET Lahore
 // Date: 21.7.2023
 
+`ifndef C_EXT_DEFS
+`define C_EXT_DEFS
 
 // Bus interface from IF to cext
 typedef struct packed {                            
@@ -23,6 +25,8 @@ typedef struct packed {
     logic                           is_comp; 
     logic                           illegal;
 } type_cext2if_s;
+
+`endif
 
 
 //deprecated, used opcode values from pcore_interface_defs.svh

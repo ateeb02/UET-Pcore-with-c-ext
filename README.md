@@ -147,3 +147,4 @@ init started: BusyBox v1.33.0 (2023-06-23 15:18:29 PKT)
 
 #
 ``` 
+riscof run --config config.ini --suite /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m --env /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/env

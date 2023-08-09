@@ -15,7 +15,7 @@
 `else
 `include "mmu_defs.svh"
 `include "cache_defs.svh"
-//`include "c_ext_defs.svh" //edit
+`include "c_ext_defs.svh" //edit
 `endif
 
 module fetch (
@@ -82,6 +82,8 @@ assign mmu2if    = mmu2if_i;
 assign exe2if_fb = exe2if_fb_i;
 assign csr2if_fb = csr2if_fb_i;
 assign fwd2if    = fwd2if_i;
+
+assign if2cext_o.icache_valid = icache2if.ack;
 
 // Evaluation for misaligned address
 assign pc_misaligned = (~cext2if_i.is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;

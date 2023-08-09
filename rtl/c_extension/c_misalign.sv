@@ -18,11 +18,15 @@ module c_misalign (
     output  logic   [31:0]  inst_out
 );
 
+
+
+    
     logic [15:0] upper_16;
     logic [31:0] conc_32_misallign;
     logic is_missaligned, next_misaligned;
     typedef enum logic[1:0] {s0 = 2'b00, s1= 2'b01, s2=2'b10} states;
     states current_state, next_state;
+    logic temp_branch = 1'b0;
 
     always_comb begin // misalignment check
         if((inst_in[17:16] == 2'b11) &  (inst_in[1:0] != 2'b11))begin
@@ -85,7 +89,7 @@ module c_misalign (
             inst_out =32'h0000_0013;
             stall_pc =1'b1;
             pc_misaligned_o =1'b1;
-            if (sel_for_branch) next_state = s0;  // if a brach or jump occurs, priotize the jump. thus resetting the realligner
+            if (temp_branch) next_state = s0;  // if a brach or jump occurs, priotize the jump. thus resetting the realligner
             else if (icache_valid) next_state =s2;    //if a valid signal is recieved from cache, then jump to next state
             else next_state= s1;        
 
@@ -95,7 +99,7 @@ module c_misalign (
             pc_out = pc_in; 
             pc_misaligned_o =1'b1;
             stall_pc = 1'b0;
-             if (sel_for_branch) next_state=s0;
+             if (temp_branch) next_state=s0;
             else begin
                 if (next_misaligned ) next_state =s1;        // if the missalignment is in the s1 stage, go to s1 instead of s0 after s2
                 else next_state =s0;

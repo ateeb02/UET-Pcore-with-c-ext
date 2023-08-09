@@ -1,8 +1,8 @@
-# testlist generated on 2023-08-08 10:04 GMT
+# testlist generated on 2023-08-09 06:20 GMT
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/add-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/add-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/add-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -14,7 +14,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/addi-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/addi-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/addi-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -26,7 +26,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/and-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/and-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/and-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -38,7 +38,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/andi-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/andi-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/andi-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -50,7 +50,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/auipc-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/auipc-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/auipc-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -62,7 +62,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/beq-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/beq-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/beq-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -74,7 +74,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/bge-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/bge-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/bge-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -86,7 +86,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/bgeu-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/bgeu-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/bgeu-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -98,7 +98,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/blt-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/blt-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/blt-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -110,7 +110,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/bltu-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/bltu-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/bltu-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -122,7 +122,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/bne-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/bne-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/bne-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -134,7 +134,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/fence-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/fence-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/fence-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -146,7 +146,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/jal-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/jal-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/jal-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -158,7 +158,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/jalr-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/jalr-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/jalr-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -170,7 +170,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lb-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lb-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lb-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -182,7 +182,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lbu-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lbu-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lbu-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -194,7 +194,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lh-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lh-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lh-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -206,7 +206,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lhu-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lhu-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lhu-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -218,7 +218,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lui-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lui-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lui-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -230,7 +230,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lw-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/lw-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/lw-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -242,7 +242,7 @@
 ? /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/misalign1-jalr-01.S
 : commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/misalign1-jalr-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/misalign1-jalr-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -254,7 +254,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/or-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/or-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/or-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -266,7 +266,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/ori-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/ori-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/ori-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -278,7 +278,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sb-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sb-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sb-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -290,7 +290,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sh-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sh-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sh-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -302,7 +302,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sll-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sll-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sll-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -314,7 +314,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/slli-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/slli-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/slli-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -326,7 +326,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/slt-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/slt-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/slt-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -338,7 +338,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/slti-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/slti-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/slti-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -350,7 +350,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sltiu-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sltiu-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sltiu-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -362,7 +362,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sltu-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sltu-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sltu-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -374,7 +374,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sra-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sra-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sra-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -386,7 +386,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/srai-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/srai-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/srai-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -398,7 +398,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/srl-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/srl-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/srl-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -410,7 +410,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/srli-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/srli-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/srli-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -422,7 +422,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sub-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sub-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sub-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -434,7 +434,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/sw-align-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/sw-align-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/sw-align-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -446,7 +446,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/xor-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/xor-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/xor-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -458,7 +458,7 @@
 /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/xori-01.S:
   commit_id: '-'
   work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/I/src/xori-01.S
+    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/src/xori-01.S
   macros:
   - TEST_CASE_1=True
   - XLEN=32
@@ -467,103 +467,3 @@
   - xori
   test_path: 
     /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/xori-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/div-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/div-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - div
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/div-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/divu-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/divu-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - divu
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/divu-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mul-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/mul-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - mul
-  - mul
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mul-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulh-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/mulh-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - mulh
-  - mulh
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulh-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulhsu-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/mulhsu-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - mulhsu
-  - mulhsu
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulhsu-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulhu-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/mulhu-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - mulhu
-  - mulhu
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/mulhu-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/rem-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/rem-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - rem
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/rem-01.S
-/home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/remu-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscof_work/M/src/remu-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32IM
-  coverage_labels:
-  - remu
-  test_path: 
-    /home/abdul_waheed/github_files/UET-Pcore-with-c-ext/verif/riscv-arch-test/riscv-test-suite/rv32i_m/M/src/remu-01.S
