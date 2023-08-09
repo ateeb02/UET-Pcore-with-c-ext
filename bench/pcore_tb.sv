@@ -1,8 +1,19 @@
 `timescale 1 ns / 100 ps
-`include "pcore_interface_defs.svh"
+`include "../rtl/defines/pcore_interface_defs.svh"
 
-module pcore_tb(input bit clk, input bit reset);
+module pcore_tb;
 
+  logic clk, reset;
+  	initial begin
+		clk = 1'b0;
+		forever clk = #10 ~clk;
+	end
+
+  initial begin
+    #1 reset =1'b1;
+    #20 reset =1'b0;
+
+  end
 reg                       irq_ext;
 reg                       irq_soft;
 reg                       uart_rx;

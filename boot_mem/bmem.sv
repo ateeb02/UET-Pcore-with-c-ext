@@ -9,8 +9,8 @@
 // Date: 26.6.2023                                                                
 
 
-`ifndef VERILATOR                                                              
-`include "../defines/cache_defs.svh"                            
+`ifndef vsim                                                              
+`include "../rtl/defines/cache_defs.svh"                            
 `else                                                                          
 `include "cache_defs.svh"                                       
 `endif        

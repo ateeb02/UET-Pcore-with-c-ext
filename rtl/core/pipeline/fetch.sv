@@ -8,7 +8,7 @@
 // Date: 11.8.2022
 
 
-`ifndef VERILATOR
+`ifndef vsim
 `include "../../defines/mmu_defs.svh"
 `include "../../defines/cache_defs.svh"
 `include "../../defines/c_ext_defs.svh" //edit

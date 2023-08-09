@@ -10,6 +10,8 @@
 `ifndef C_EXT_DEFS
 `define C_EXT_DEFS
 
+`include "./pcore_config_defs.svh"
+
 // Bus interface from IF to cext
 typedef struct packed {                            
     logic [`XLEN-1:0]               instr_un;

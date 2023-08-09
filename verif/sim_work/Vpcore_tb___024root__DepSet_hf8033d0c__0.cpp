@@ -535,11 +535,8 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
     vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__forward_stall_module__DOT__lsu_stall_ff 
         = ((~ ((~ (IData)(vlSelf->reset)) | (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__forward_stall_module__DOT__lsu_flush))) 
            & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__forward_stall_module__DOT__lsu_stall_next));
+    vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__done_ff = 0U;
     if (vlSelf->reset) {
-        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT____Vcellout__icache_controller_module__icache2if_ack_o 
-            = ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_controller_module__DOT____VdfgTmp_h920914d9__0) 
-               & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__cache_hit));
-        vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__done_ff = 0U;
         if ((1U & (~ (IData)(vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__wb_dcache_top_module__DOT__wb_dcache_controller_module__DOT__cache_line_clean)))) {
             if (vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__wb_dcache_top_module__DOT__wb_dcache_controller_module__DOT__cache_wr) {
                 __Vdlyvval__pcore_tb__DOT__dut__DOT__mem_top_module__DOT__wb_dcache_top_module__DOT__wb_dcache_datapath_module__DOT__cache_data_ram__v0[0U] 
@@ -629,16 +626,6 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
             = vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__id2exe_ctrl_next;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__mul2wrb_pipe_ff 
             = vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__mul2wrb_next;
-        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache2if_data_ff 
-            = ((1U & (IData)((vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
-                              >> 5U))) ? ((1U & (IData)(
-                                                        (vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
-                                                         >> 4U)))
-                                           ? vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[3U]
-                                           : vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[2U])
-                : ((1U & (IData)((vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
-                                  >> 4U))) ? vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[1U]
-                    : vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[0U]));
         if (vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__busy_ff) {
             if ((0x1fU == (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__counter))) {
                 vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__busy_ff = 0U;
@@ -678,6 +665,16 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
                        << 1U);
             }
         }
+        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache2if_data_ff 
+            = ((1U & (IData)((vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
+                              >> 5U))) ? ((1U & (IData)(
+                                                        (vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
+                                                         >> 4U)))
+                                           ? vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[3U]
+                                           : vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[2U])
+                : ((1U & (IData)((vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__mmu_module__DOT__mmu2if 
+                                  >> 4U))) ? vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[1U]
+                    : vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache_rd_buf[0U]));
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr2wrb_data_pipe_ff 
             = vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__csr_rdata;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__id2exe_data_pipe_ff[0U] 
@@ -721,9 +718,10 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__lsu2wrb_data_pipe_ff[3U] 
             = vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__lsu2wrb_data_next[3U];
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state = 0U;
+        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT____Vcellout__icache_controller_module__icache2if_ack_o 
+            = ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_controller_module__DOT____VdfgTmp_h920914d9__0) 
+               & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__cache_hit));
     } else {
-        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT____Vcellout__icache_controller_module__icache2if_ack_o = 0U;
-        vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__done_ff = 0U;
         if ((1U != (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state))) {
             if (((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__is_missaligned) 
                  & (0U == (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state)))) {
@@ -753,11 +751,11 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
         vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__wb_dcache_top_module__DOT__wb_dcache_controller_module__DOT__dcache_state_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__id2exe_ctrl_pipe_ff = 0ULL;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__mul2wrb_pipe_ff = 0U;
-        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache2if_data_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__busy_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__done_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__quo_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__divider_module__DOT__rem_ff = 0ULL;
+        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT__icache_datapath_module__DOT__icache2if_data_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr2wrb_data_pipe_ff = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__id2exe_data_pipe_ff[0U] = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__id2exe_data_pipe_ff[1U] = 0U;
@@ -781,6 +779,7 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_sequent__TOP__0(Vpcore_tb___024root
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__lsu2wrb_data_pipe_ff[3U] = 0U;
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state 
             = vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_state;
+        vlSelf->pcore_tb__DOT__dut__DOT__mem_top_module__DOT__icache_top_module__DOT____Vcellout__icache_controller_module__icache2if_ack_o = 0U;
     }
     vlSelf->pcore_tb__DOT__main_time[0U] = __Vdly__pcore_tb__DOT__main_time[0U];
     vlSelf->pcore_tb__DOT__main_time[1U] = __Vdly__pcore_tb__DOT__main_time[1U];
@@ -4323,6 +4322,9 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_comb__TOP__0(Vpcore_tb___024root* v
             }
         }
     }
+    vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U] 
+        = ((0xfffffffeU & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U]) 
+           | (1U & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__fetch_module__DOT__icache2if)));
     vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[1U] 
         = ((1U & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[1U]) 
            | (((1U & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__fetch_module__DOT__icache2if))
@@ -4464,18 +4466,16 @@ VL_INLINE_OPT void Vpcore_tb___024root___nba_comb__TOP__0(Vpcore_tb___024root* v
                                << 0x1fU) | (vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U] 
                                             >> 1U)));
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_state 
-            = ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__br_taken_i)
-                ? 0U : ((1U & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U])
-                         ? 2U : 1U));
+            = ((1U & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U])
+                ? 2U : 1U);
     } else if ((2U == (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state))) {
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT____Vcellout__misalign__pc_out 
             = ((vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[1U] 
                 << 0x1fU) | (vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U] 
                              >> 1U));
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_state 
-            = ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__br_taken_i)
-                ? 0U : ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_misaligned)
-                         ? 1U : 0U));
+            = ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_misaligned)
+                ? 1U : 0U);
     } else {
         vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_state = 0U;
     }

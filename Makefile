@@ -46,6 +46,7 @@ verilate_command := $(verilator) +define+$(defines) 				\
 					--exe bench/pcore_tb.cpp		\
 					--trace-structs --trace
 
+
 verilate:
 	@echo "Building verilator model"
 	$(verilate_command)
@@ -78,3 +79,33 @@ clean-all:
 	$(uartbuild_root)*.dump						\
 	verif/*work/
 
+.PHONY:sim
+sim: waveform.vcd
+
+.PHONY:verilate
+verilate: .stamp.verilate
+
+.PHONY:build
+build: obj_dir/Vsoc_top
+
+.PHONY:waves
+waves: waveform.vcd
+	@echo
+	@echo "### WAVES ###"
+	gtkwave waveform.vcd
+
+waveform.vcd: ./obj_dir/Vsoc_top
+	@echo
+	@echo "### SIMULATING ###"
+	@./obj_dir/Vsoc_top +verilator+rand+reset+2 
+
+./obj_dir/Vsoc_top: .stamp.verilate
+	@echo
+	@echo "### BUILDING SIM ###"
+	make -C obj_dir -f Vsoc_top.mk Vsoc_top
+
+.stamp.verilate: ./rtl/soc_top.sv ./bench/pcore_tb.cpp
+	@echo
+	@echo "### VERILATING ###"
+	verilator -Wall --trace --x-assign unique --x-initial unique -cc ./rtl/soc_top.sv $(src) --exe ./bench/pcore_tb.cpp
+	@touch .stamp.verilate

@@ -2137,6 +2137,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+220,"next_misaligned", false,-1);
     tracep->declBus(c+221,"current_state", false,-1, 1,0);
     tracep->declBus(c+421,"next_state", false,-1, 1,0);
+    tracep->declBit(c+2178,"temp_branch", false,-1);
     tracep->popNamePrefix(2);
     tracep->pushNamePrefix("csr_module ");
     tracep->declBit(c+2084,"rst_n", false,-1);
@@ -2271,8 +2272,8 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+1583,"csr_rd_exc_req", false,-1);
     tracep->declBit(c+222,"csr_wr_exc_req", false,-1);
     tracep->declBit(c+783,"csr_satp_exc_req", false,-1);
-    tracep->declBus(c+2178,"csr_rd_exc_code", false,-1, 3,0);
-    tracep->declBus(c+2179,"csr_wr_exc_code", false,-1, 3,0);
+    tracep->declBus(c+2179,"csr_rd_exc_code", false,-1, 3,0);
+    tracep->declBus(c+2180,"csr_wr_exc_code", false,-1, 3,0);
     tracep->declBit(c+1584,"csr_exc_req", false,-1);
     tracep->declBit(c+1585,"exc_req", false,-1);
     tracep->declBus(c+1586,"exc_code", false,-1, 3,0);
@@ -2487,7 +2488,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+242,"csr_sie_wr_flag", false,-1);
     tracep->declBit(c+243,"csr_stvec_wr_flag", false,-1);
     tracep->declBit(c+244,"csr_sepc_wr_flag", false,-1);
-    tracep->declBit(c+2180,"csr_scause_wr_flag", false,-1);
+    tracep->declBit(c+2178,"csr_scause_wr_flag", false,-1);
     tracep->declBit(c+245,"csr_stval_wr_flag", false,-1);
     tracep->declBit(c+246,"csr_sip_wr_flag", false,-1);
     tracep->declBit(c+247,"csr_satp_wr_flag", false,-1);
@@ -2522,7 +2523,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+1675,"m_mode_exc_req", false,-1);
     tracep->declBit(c+1676,"m_mode_irq_req", false,-1);
     tracep->declBit(c+1677,"m_mode_pc_req", false,-1);
-    tracep->declBit(c+2180,"m_mode_misalign_exc_req", false,-1);
+    tracep->declBit(c+2178,"m_mode_misalign_exc_req", false,-1);
     tracep->declBit(c+1678,"m_mode_lsu_pf_exc_req", false,-1);
     tracep->declBit(c+1679,"m_mode_ileg_inst_exc_req", false,-1);
     tracep->declBit(c+422,"m_mode_i_pf_exc_req", false,-1);
@@ -2534,7 +2535,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+1682,"s_mode_irq_req", false,-1);
     tracep->declBit(c+1683,"s_mode_pc_req", false,-1);
     tracep->declBit(c+871,"s_mode_enabled", false,-1);
-    tracep->declBit(c+2180,"s_mode_misalign_exc_req", false,-1);
+    tracep->declBit(c+2178,"s_mode_misalign_exc_req", false,-1);
     tracep->declBit(c+1684,"u_mode_ecall_req", false,-1);
     tracep->declBit(c+1685,"sret_pc_req", false,-1);
     tracep->declBit(c+1686,"st_pf_exc_req", false,-1);
@@ -2553,8 +2554,8 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBit(c+1139,"ld_ops", false,-1);
     tracep->declBit(c+1140,"st_ops", false,-1);
     tracep->declBit(c+1141,"is_ld_st_ops", false,-1);
-    tracep->declBit(c+2180,"ld_misalign_exc_req", false,-1);
-    tracep->declBit(c+2180,"st_misalign_exc_req", false,-1);
+    tracep->declBit(c+2178,"ld_misalign_exc_req", false,-1);
+    tracep->declBit(c+2178,"st_misalign_exc_req", false,-1);
     tracep->declBit(c+1691,"csr_mcycle_inc", false,-1);
     tracep->declBit(c+1692,"csr_mcycleh_inc", false,-1);
     tracep->declBit(c+1693,"csr_minstret_inc", false,-1);
@@ -4667,7 +4668,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBus(c+1814,"uart_reg_status_next", false,-1, 7,0);
     tracep->declBus(c+988,"uart_reg_int_mask_ff", false,-1, 7,0);
     tracep->declBus(c+1062,"uart_reg_int_mask_next", false,-1, 7,0);
-    tracep->declBit(c+2180,"rx_reg_wr_flag", false,-1);
+    tracep->declBit(c+2178,"rx_reg_wr_flag", false,-1);
     tracep->declBit(c+1815,"tx_reg_wr_flag", false,-1);
     tracep->declBit(c+1816,"baud_reg_wr_flag", false,-1);
     tracep->declBit(c+1817,"txctrl_reg_wr_flag", false,-1);
@@ -4772,7 +4773,7 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_init_sub__TOP__0(Vpcore_tb___024roo
     tracep->declBus(c+1066,"uart_reg_scratch_next", false,-1, 7,0);
     tracep->declBit(c+1824,"fifoctrl_reg_wr_flag", false,-1);
     tracep->declBit(c+1825,"tx_reg_wr_flag", false,-1);
-    tracep->declBit(c+2180,"baud_reg_wr_flag", false,-1);
+    tracep->declBit(c+2178,"baud_reg_wr_flag", false,-1);
     tracep->declBit(c+1826,"ie_reg_wr_flag", false,-1);
     tracep->declBit(c+1827,"lctrl_reg_wr_flag", false,-1);
     tracep->declBit(c+1828,"scratch_reg_wr_flag", false,-1);
@@ -5500,23 +5501,17 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_full_sub_0(Vpcore_tb___024root* vlS
                                     ? 1U : 0U) : ((1U 
                                                    == (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state))
                                                    ? 
-                                                  ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__br_taken_i)
-                                                    ? 0U
-                                                    : 
-                                                   ((1U 
-                                                     & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U])
-                                                     ? 2U
-                                                     : 1U))
+                                                  ((1U 
+                                                    & vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__if2cext[0U])
+                                                    ? 2U
+                                                    : 1U)
                                                    : 
                                                   ((2U 
                                                     == (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__current_state))
                                                     ? 
-                                                   ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__br_taken_i)
-                                                     ? 0U
-                                                     : 
-                                                    ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_misaligned)
-                                                      ? 1U
-                                                      : 0U))
+                                                   ((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__misalign__DOT__next_misaligned)
+                                                     ? 1U
+                                                     : 0U)
                                                     : 0U)))),2);
     bufp->fullBit(oldp+422,(((IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__m_mode_exc_req) 
                              & (IData)(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__i_pf_exc_req))));
@@ -8938,9 +8933,9 @@ VL_ATTR_COLD void Vpcore_tb___024root__trace_full_sub_0(Vpcore_tb___024root* vlS
     bufp->fullCData(oldp+2175,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__decode__DOT__LUI_opcode),7);
     bufp->fullCData(oldp+2176,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__decode__DOT__AUIPC_opcode),7);
     bufp->fullCData(oldp+2177,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__c_top__DOT__decode__DOT__instr_opcode),5);
-    bufp->fullCData(oldp+2178,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__csr_rd_exc_code),4);
-    bufp->fullCData(oldp+2179,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__csr_wr_exc_code),4);
-    bufp->fullBit(oldp+2180,(0U));
+    bufp->fullBit(oldp+2178,(0U));
+    bufp->fullCData(oldp+2179,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__csr_rd_exc_code),4);
+    bufp->fullCData(oldp+2180,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__csr_wr_exc_code),4);
     bufp->fullBit(oldp+2181,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__uart_irq_req));
     bufp->fullBit(oldp+2182,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__csr_module__DOT__ms_mode_ecall_req));
     bufp->fullQData(oldp+2183,(vlSelf->pcore_tb__DOT__dut__DOT__core_top_module__DOT__pipeline_top_module__DOT__muldiv_module__DOT__mult_su),64);
