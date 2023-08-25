@@ -159,6 +159,27 @@ typedef struct packed {
     logic                            ack;  
 } type_imem2if_s;
 
+// PreFetch-2-Fetch data signals
+typedef struct packed {
+    logic [`XLEN-1:0]                instr;
+    logic [`XLEN-1:0]                pc;
+    logic [`XLEN-1:0]                pc_next;
+} type_pref2if_data_s;
+
+// PreFetch-2-Fetch control signals
+typedef struct packed {
+    //logic                           exc_req;
+    logic                           ack;
+} type_pref2if_ctrl_s;
+
+// Fetch-2-Prefetch control signals
+typedef struct packed {
+    logic                           instr_req;
+    logic                           is_comp;
+    logic                           access_misalign;
+    logic                           clear;
+} type_if2pref_ctrl_s;
+
 
 // Fetch-2-Decode data signals
 typedef struct packed {                            

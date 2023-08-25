@@ -23,6 +23,9 @@ module fetch (
     input   logic                                   rst_n,           // reset
     input   logic                                   clk,             // clock
 
+
+////////////////////////////////
+////
    // IF <---> ICACHE MEM interface
     output type_if2icache_s                         if2icache_o,     // Instruction cache memory request
     input wire type_icache2if_s                     icache2if_i,     // Instruction cache memory response
@@ -86,7 +89,9 @@ assign fwd2if    = fwd2if_i;
 assign if2cext_o.icache_valid = icache2if.ack;
 
 // Evaluation for misaligned address
-assign pc_misaligned = (~cext2if_i.is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;
+//assign pc_misaligned = (pc_ff[1] | pc_ff[0]);                                 //Original code
+//assign pc_misaligned = (~cext2if_i.is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;      //only works for aligned access
+assign pc_misaligned = 0;
 
 // Stall signal for IF stage
 assign if_stall = fwd2if.if_stall | (~icache2if.ack) | cext2if_i.stall;
@@ -101,12 +106,13 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
+
     case (cext2if_i.is_comp)
         1'b0:       incr = 32'd4;
         1'b1:       incr = 32'd2;
         default:    incr = 32'd4;
     endcase
-
+    if2cext_o.pc_ff = pc_ff;
     pc_next = (cext2if_i.pc_aligned + incr);
 
     case (1'b1)
@@ -158,14 +164,6 @@ exc_code_next  = exc_code_ff;
     // purpose need a separate signal from MMU
 end
 
-
-// Update the outputs to MMU and Imem modules
-assign if2mmu.i_vaddr = pc_next;
-assign if2mmu.i_req   = `IMEM_INST_REQ; 
-
-assign if2icache_o.addr = mmu2if.i_paddr[`XLEN-1:0]; // pc_next; 
-assign if2icache_o.req  = mmu2if.i_hit;              // `IMEM_INST_REQ;
-
 assign if2icache_o.req_kill     = fwd2if.csr_new_pc_req | fwd2if.exe_new_pc_req;
 assign if2icache_o.icache_flush = csr2if_fb.icache_flush;   
 
@@ -173,8 +171,9 @@ assign if2icache_o.icache_flush = csr2if_fb.icache_flush;
 
 //assign if2id_data.instr         = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
 
-assign if2cext_o.instr_un       = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
-assign if2id_data.instr         = cext2if_i.instr;
+//assign if2cext_o.instr_un       = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
+//assign if2id_data.instr         = cext2if_i.instr;
+
 
 assign if2id_data.pc            = pc_ff;
 assign if2id_data.pc_next       = pc_next;
@@ -184,7 +183,7 @@ assign if2id_data.exc_code      = exc_code_next;
 assign if2id_ctrl.exc_req       = exc_req_next;
 
 // Generate stall request to forward_stall module
-assign if2fwd_stall_o           = if2mmu.i_req & ~icache2if.ack;
+assign if2fwd_stall_o           = if2mmu.i_req & ~pref2if.ack;
 
 assign if2id_data_o             = if2id_data;
 assign if2id_ctrl_o             = if2id_ctrl;

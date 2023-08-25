@@ -32,19 +32,19 @@ typedef enum {
     ICACHE_ALLOCATE 
 } type_icache_states_e; 
 
-// Bus interface from IF to icache  
+// Bus interface from IF to icache  (now prefetch)
 typedef struct packed {                            
     logic [ICACHE_ADDR_WIDTH-1:0]    addr;
     logic                            req;
     logic                            req_kill;
     logic                            icache_flush; 
-} type_if2icache_s;
+} type_pref2icache_s;
 
-// Bus interface from Icache to IF
+// Bus interface from Icache to IF (now prefetch)
 typedef struct packed {                            
     logic [ICACHE_DATA_WIDTH-1:0]    r_data;
     logic                            ack;  
-} type_icache2if_s;
+} type_icache2pref_s;
 
 
 typedef struct packed {
