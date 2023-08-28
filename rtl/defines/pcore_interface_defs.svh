@@ -185,8 +185,6 @@ typedef struct packed {
 // Fetch-2-Decode data signals
 typedef struct packed {                            
     logic [`XLEN-1:0]                instr;
-    logic [`XLEN-1:0]                pc;
-    logic [`XLEN-1:0]                pc_next;
     type_exc_code_e                  exc_code;
     logic                            instr_flushed;
 } type_if2id_data_s;

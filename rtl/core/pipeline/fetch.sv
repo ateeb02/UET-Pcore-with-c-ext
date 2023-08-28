@@ -93,10 +93,6 @@ assign csr2if_fb = csr2if_fb_i;
 assign fwd2if    = fwd2if_i;
 
 assign if2cext_o.icache_valid = icache2if.ack;
-
-// Evaluation for misaligned address
-//assign pc_misaligned = (pc_ff[1] | pc_ff[0]);                                 //Original code
-//assign pc_misaligned = (~cext2if_i.is_comp) ? (pc_ff[1] | pc_ff[0]) : 0;      //only works for aligned access
 assign pc_misaligned = 0;
 
 // Stall signal for IF stage
@@ -150,7 +146,6 @@ always_ff @(negedge rst_n, posedge clk) begin
     end
 end
 
-
 always_comb begin
 exc_req_next   = exc_req_ff;
 exc_code_next  = exc_code_ff;
@@ -194,4 +189,5 @@ assign if2id_ctrl_o             = if2id_ctrl;
 assign if2mmu_o                 = if2mmu;
 
 endmodule : fetch
+
 

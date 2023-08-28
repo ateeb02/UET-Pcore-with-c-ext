@@ -18,6 +18,7 @@
 `include "cache_defs.svh"
 `endif
 
+
 module prefetch (
     input   logic                                   clk,
     input   logic                                   rst_n,
@@ -57,11 +58,14 @@ logic   [31:0]  pc_fifofetch;
 logic   [31:0]  incr;
 
 always_ff @ (posedge clk, negedge reset) begin
+
+    //PC realignment for the icache access
     incr = if2pref_i.access_misalign ? 32'd2 : 32'd0;
-    pc_fifofetch = pc_ff - incr;
+    pc_fifofetch = if2pref_i.pc_ff - incr;
+    
     if (reset || if2pref_i.clear) begin
-        fifo_fetch[0] = 32'h0000_0013;
-        fifo_fetch[1] = 32'h0000_0013;
+        fifo_fetch[0] = `INSTR_NOP;
+        fifo_fetch[1] = `INSTR_NOP;
     end
     else if (if2pref_i.instr_req) begin
         if (if2pref_i.access_misalign) begin
@@ -70,7 +74,6 @@ always_ff @ (posedge clk, negedge reset) begin
                 fifo_fetch[1] <= fifo_fetch[0];
                 fifo_fetch[0] <= data_in;
                 pref2if_ctrl_o.ack = 1'b1;
-
             end else begin
                 data_o <= {fifo_fetch[0][15:0], fifo_fetch[1][31:16]}
                 fifo_fetch[1] <= fifo_fetch[0];
