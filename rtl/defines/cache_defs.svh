@@ -38,13 +38,13 @@ typedef struct packed {
     logic                            req;
     logic                            req_kill;
     logic                            icache_flush; 
-} type_pref2icache_s;
+} type_if2icache_s;
 
 // Bus interface from Icache to IF (now prefetch)
 typedef struct packed {                            
     logic [ICACHE_DATA_WIDTH-1:0]    r_data;
     logic                            ack;  
-} type_icache2pref_s;
+} type_icache2if_s;
 
 
 typedef struct packed {
