@@ -174,11 +174,12 @@ typedef struct packed {
 
 // Fetch-2-Prefetch control signals
 typedef struct packed {
+    logic                           pc_ff;
     logic                           instr_req;
     logic                           is_comp;
     logic                           access_misalign;
     logic                           clear;
-} type_if2pref_ctrl_s;
+} type_if2pref_s;
 
 
 // Fetch-2-Decode data signals

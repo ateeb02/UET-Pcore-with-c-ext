@@ -26,6 +26,12 @@ module fetch (
 
 ////////////////////////////////
 ////
+   // IF <---> Prefetch interface
+    output type_if2pref_ctrl_s                      if2pref_o,
+    input wire type_pref2if_ctrl_s                  pref2if_ctrl_i,
+    input wire type_pref2if_data_s                  pref2if_data_i
+
+
    // IF <---> ICACHE MEM interface
     output type_if2icache_s                         if2icache_o,     // Instruction cache memory request
     input wire type_icache2if_s                     icache2if_i,     // Instruction cache memory response
@@ -167,12 +173,9 @@ end
 assign if2icache_o.req_kill     = fwd2if.csr_new_pc_req | fwd2if.exe_new_pc_req;
 assign if2icache_o.icache_flush = csr2if_fb.icache_flush;   
 
-// Update the outputs to ID stage
-
-//assign if2id_data.instr         = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
-
-//assign if2cext_o.instr_un       = icache2if.ack ? icache2if.r_data : `INSTR_NOP;
-//assign if2id_data.instr         = cext2if_i.instr;
+// Update the outputs to C-extension module
+assign if2cext_o.instr_un       = pref2if_ctrl_i.ack ? pref2if.instr : `INSTR_NOP;
+assign if2id_data.instr         = cext2if_i.instr;
 
 
 assign if2id_data.pc            = pc_ff;
