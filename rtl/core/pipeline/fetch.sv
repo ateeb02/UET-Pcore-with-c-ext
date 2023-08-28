@@ -29,7 +29,7 @@ module fetch (
    // IF <---> Prefetch interface
     output type_if2pref_ctrl_s                      if2pref_o,
     input wire type_pref2if_ctrl_s                  pref2if_ctrl_i,
-    input wire type_pref2if_data_s                  pref2if_data_i
+    input wire type_pref2if_data_s                  pref2if_data_i,
 
 
    // IF <---> ICACHE MEM interface
