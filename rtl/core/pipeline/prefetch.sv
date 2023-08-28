@@ -53,6 +53,8 @@ assign pref2icache_o.req  = mmu2pref_i.i_hit;              // `IMEM_INST_REQ;
 logic   [31:0]  fifo_fetch   [2]; //fifo direction from 0 to 1
 logic   [31:0]  data_out;
 logic   [31:0]  data_in;
+logic   [31:0]  pc_fifofetch;
+logic   [31:0]  incr;
 
 always_ff @ (posedge clk, negedge reset) begin
     incr = if2pref_i.access_misalign ? 32'd2 : 32'd0;
