@@ -39,6 +39,16 @@ module prefetch (
 );
 
 
+logic   [31:0]  fifo_fetch      [2]; //fifo direction from 0 to 1
+logic   [31:0]  data_out;
+logic   [31:0]  data_in;
+logic   [31:0]  pc_fifofetch;
+
+logic    [2:0]  pc_incr;
+
+logic           pc_misalign;
+
+
 assign pref2if_data_o.instr = data_out;
 assign data_in   = icache2pref_i.ack ? icache2pref_i.instr : `INSTR_NOP;
 
@@ -49,54 +59,53 @@ assign pref2mmu_o.i_req   = `IMEM_INST_REQ;
 assign pref2icache_o.addr = mmu2pref_i.i_paddr[`XLEN-1:0]; // pc_next; 
 assign pref2icache_o.req  = mmu2pref_i.i_hit;              // `IMEM_INST_REQ;
 
-assign pc_fifofetch = if2pref_i.pc_ff + incr;
+assign pc_misalign  = pc_ff[1];
+assign pc_fifofetch = if2pref_i.pc_ff + pc_incr;
+
+
+
+always_comb begin
+    case (`INSTR_NOP)
+        fifo_fetch[1]:  fifo_empty[1] = 1'b1;
+        fifo_fetch[0]:  fifo_empty[0] = 1'b1;
+        default:        fifo_empty    = 2'b00;
+    endcase
+
+
+    if (fifo_fetch[0] == `INSTR_NOP || fifo_fetch[1] == `INSTR_NOP) begin
+        pref2if_ctrl_o.fifo_empty = 1'b1;
+        pref2if_ctrl_o.stall = 1'b1;
+        fifo_fetch[1] = fifo_fetch[0];
+    end
+end
+
 
 // Prefetch FIFO Logic
-logic   [31:0]  fifo_fetch   [2]; //fifo direction from 0 to 1
-logic   [31:0]  data_out;
-logic   [31:0]  data_in;
-logic   [31:0]  pc_fifofetch;
-logic   [31:0]  incr;
-
-always_ff @ (posedge clk, negedge !rst_n) begin
+always_ff @ (posedge clk, negedge rst_n) begin
 
     //PC realignment for the icache access
-    //incr = if2pref_i.access_misalign ? 32'd2 : 32'd0;
-    
+    pc_fifofetch = if2pref_i.pc_ff + incr;
+
     if (!rst_n || if2pref_i.clear) begin
         fifo_fetch[1] <= `INSTR_NOP;
         fifo_fetch[0] <= `INSTR_NOP;
         pref2if_ctrl_o.ack = 1'b0;
-        incr = 32'd0;
+        pc_incr = 32'd0;
 
     end else if (if2pref_i.instr_req) begin
-        if (if2pref_i.access_misalign) begin
-            incr = 32'd2;
-            if (if2pref_i.is_comp) begin
-                data_out <= {16'b0, fifo_fetch[1][31:16]};
-                fifo_fetch[1] <= fifo_fetch[0];
-                fifo_fetch[0] <= data_in;
-                pref2if_ctrl_o.ack = 1'b1;
-
-            end else begin
-                data_out <= {fifo_fetch[0][15:0], fifo_fetch[1][31:16]}
-                fifo_fetch[1] <= fifo_fetch[0];
-                fifo_fetch[0] <= data_in;
-                pref2if_ctrl_o.ack = 1'b1;
-            end
+        if (pc_misalign) begin
+            pc_incr = 32'd6;
+            data_out <= {fifo_fetch[0][15:0], fifo_fetch[1][31:16]}
+            fifo_fetch[1] <= fifo_fetch[0];
+            fifo_fetch[0] <= data_in;
+            pref2if_ctrl_o.ack = 1'b1;
 
         end else begin
-            incr = 32'd4;
-            if (if2pref_i.is_comp) begin
-                data_out <= {16'b0, fifo_fetch[1][15:0]};
-                pref2if_ctrl_o.ack = 1'b1;
-
-            end else begin
-                data_out <= fifo_fetch[1];
-                fifo_fetch[1] <= fifo_fetch[0];
-                fifo_fetch[0] <= data_in;
-                pref2if_ctrl_o.ack = 1'b1;    pc_fifofetch = if2pref_i.pc_ff + incr;
-            end
+            pc_incr = 32'd4;
+            data_out <= fifo_fetch[1];
+            fifo_fetch[1] <= fifo_fetch[0];
+            fifo_fetch[0] <= data_in;
+            pref2if_ctrl_o.ack = 1'b1;
         end
     end
     pref2if_ctrl_o.ack = 1'b0;

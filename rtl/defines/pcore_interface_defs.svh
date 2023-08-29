@@ -169,6 +169,8 @@ typedef struct packed {
 // PreFetch-2-Fetch control signals
 typedef struct packed {
     //logic                           exc_req;
+    logic                           stall;
+    logic [1:0]                     fifo_empty;
     logic                           ack;
 } type_pref2if_ctrl_s;
 
@@ -177,7 +179,6 @@ typedef struct packed {
     logic                           pc_ff;
     logic                           instr_req;
     logic                           is_comp;
-    logic                           access_misalign;
     logic                           clear;
 } type_if2pref_s;
 
