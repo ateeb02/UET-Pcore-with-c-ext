@@ -172,7 +172,7 @@ typedef struct packed {
     logic                           ack;
 } type_pref2if_ctrl_s;
 
-// Fetch-2-Prefetch control signals
+// Fetch-2-Prefetch scrsignals
 typedef struct packed {
     logic                           pc_ff;
     logic                           instr_req;
