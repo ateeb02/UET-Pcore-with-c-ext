@@ -70,14 +70,13 @@ always_comb begin
         fifo_fetch[0]:  fifo_empty[0] = 1'b1;
         default:        fifo_empty    = 2'b00;
     endcase
-
-
-    if (fifo_fetch[0] == `INSTR_NOP || fifo_fetch[1] == `INSTR_NOP) begin
-        pref2if_ctrl_o.fifo_empty = 1'b1;
-        pref2if_ctrl_o.stall = 1'b1;
-        fifo_fetch[1] = fifo_fetch[0];
+    if (|fifo_empty) begin 
+        //TODO handling of the emppty fifo and related signals.
+        stall = 1'b1;
+        data_in = fifo_fetch[1];
     end
 end
+
 
 
 // Prefetch FIFO Logic
@@ -86,7 +85,7 @@ always_ff @ (posedge clk, negedge rst_n) begin
     //PC realignment for the icache access
     pc_fifofetch = if2pref_i.pc_ff + incr;
 
-    if (!rst_n || if2pref_i.clear) begin
+    if (rst_n || if2pref_i.clear) begin
         fifo_fetch[1] <= `INSTR_NOP;
         fifo_fetch[0] <= `INSTR_NOP;
         pref2if_ctrl_o.ack = 1'b0;
