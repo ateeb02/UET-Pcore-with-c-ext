@@ -162,8 +162,6 @@ typedef struct packed {
 // PreFetch-2-Fetch data signals
 typedef struct packed {
     logic [`XLEN-1:0]                instr;
-    logic [`XLEN-1:0]                pc;
-    logic [`XLEN-1:0]                pc_next;
 } type_pref2if_data_s;
 
 // PreFetch-2-Fetch control signals

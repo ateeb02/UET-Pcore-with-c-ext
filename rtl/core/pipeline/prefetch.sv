@@ -20,6 +20,7 @@
 
 
 module prefetch (
+
     input   logic                                   clk,
     input   logic                                   rst_n,
 
@@ -47,6 +48,8 @@ logic   [31:0]  pc_fifofetch;
 logic    [2:0]  pc_incr;
 
 logic           pc_misalign;
+logic           stall;
+logic           fifo_halt;
 
 
 assign pref2if_data_o.instr = data_out;
@@ -61,7 +64,7 @@ assign pref2icache_o.req  = mmu2pref_i.i_hit;              // `IMEM_INST_REQ;
 
 assign pc_misalign  = pc_ff[1];
 assign pc_fifofetch = if2pref_i.pc_ff + pc_incr;
-
+assign stall        = fifo_empty[1];
 
 
 always_comb begin
@@ -70,10 +73,9 @@ always_comb begin
         fifo_fetch[0]:  fifo_empty[0] = 1'b1;
         default:        fifo_empty    = 2'b00;
     endcase
-    if (|fifo_empty) begin 
-        //TODO handling of the emppty fifo and related signals.
-        stall = 1'b1;
-        data_in = fifo_fetch[1];
+    if (&fifo_empty) begin 
+        //TODO handling of the empty fifo and related signals.
+        pc_incr = pc_misalign ? (~(32'd2 +32'b1)) : 32'd0;
     end
 end
 
@@ -91,7 +93,7 @@ always_ff @ (posedge clk, negedge rst_n) begin
         pref2if_ctrl_o.ack = 1'b0;
         pc_incr = 32'd0;
 
-    end else if (if2pref_i.instr_req) begin
+    end else if (if2pref_i.instr_req && ~(stall)) begin
         if (pc_misalign) begin
             pc_incr = 32'd6;
             data_out <= {fifo_fetch[0][15:0], fifo_fetch[1][31:16]}
